@@ -10,12 +10,13 @@ function VerifyPayment() {
   const [status, setStatus] = useState<"verifying" | "paid" | "failed">("verifying");
 
   useEffect(() => {
-    let id = searchParams.get("checkout_id");
-    if (!id || id === "{checkout_id}") {
-      const saved = sessionStorage.getItem("pending_checkout");
-      if (saved) {
-        try { id = JSON.parse(saved).id; } catch {}
-      }
+    const ids = searchParams.getAll("checkout_id");
+    let id = ids.find(v => v !== "{checkout_id}") || null;
+    if (!id) {
+      try {
+        const saved = sessionStorage.getItem("pending_checkout");
+        if (saved) id = JSON.parse(saved).id;
+      } catch {}
     }
     setCheckoutId(id);
   }, [searchParams]);

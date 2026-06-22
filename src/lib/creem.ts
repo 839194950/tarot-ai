@@ -49,5 +49,6 @@ export async function verifyCheckout(checkoutId: string): Promise<CreemCheckoutS
   }
 
   const checkout = await response.json();
-  return { status: checkout.status === "paid" ? "paid" : "pending" };
+  const isPaid = checkout.status === "completed" || checkout.order?.status === "paid";
+  return { status: isPaid ? "paid" : "pending" };
 }
