@@ -7,7 +7,8 @@ export interface CreemCheckoutStatus {
   status: "paid" | "pending" | "expired" | "failed";
 }
 
-const CREEM_API = process.env.CREEM_API_KEY
+const CREEM_MODE = process.env.CREEM_MODE || "test";
+const CREEM_API = CREEM_MODE === "live"
   ? "https://api.creem.io"
   : "https://test-api.creem.io";
 
