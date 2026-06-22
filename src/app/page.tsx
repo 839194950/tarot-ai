@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TarotCard from "@/components/TarotCard";
 import { TarotCard as TarotCardType, getRandomCards, spreads, SpreadType } from "@/lib/cards";
 
@@ -16,6 +16,20 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const spread = spreads[selectedSpread];
+
+  // Handle return from paid checkout
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem("pending_checkout");
+      if (saved) {
+        const data = JSON.parse(saved);
+        sessionStorage.removeItem("pending_checkout");
+        setSelectedSpread(data.spreadType);
+        setQuestion(data.question || "");
+        doReading(data.spreadType, data.question || "");
+      }
+    } catch {}
+  }, []);
 
   function handleStartFreeReading() {
     setSelectedSpread("one-card");

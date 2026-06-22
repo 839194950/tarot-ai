@@ -22,6 +22,15 @@ function VerifyPayment() {
   }, [searchParams]);
 
   useEffect(() => {
+    if (status === "paid") {
+      const timer = setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
+  useEffect(() => {
     if (!checkoutId) {
       setStatus("failed");
       return;
@@ -60,9 +69,6 @@ function VerifyPayment() {
           <div className="text-5xl mb-6 animate-float">🔮</div>
           <h1 className="text-2xl font-bold text-mystic-100 mb-2">Verifying Your Payment...</h1>
           <p className="text-mystic-400">Please hold while we confirm your reading.</p>
-          {checkoutId && (
-            <p className="text-xs text-mystic-600 mt-4">ID: {checkoutId}</p>
-          )}
         </>
       )}
 
@@ -70,13 +76,7 @@ function VerifyPayment() {
         <>
           <div className="text-5xl mb-6">✨</div>
           <h1 className="text-2xl font-bold text-mystic-100 mb-2">Payment Confirmed!</h1>
-          <p className="text-mystic-400 mb-8">Your reading is ready. The cards await.</p>
-          <Link
-            href="/"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-mystic-600 to-mystic-500 rounded-xl text-white font-semibold hover:from-mystic-500 hover:to-mystic-400 transition-all"
-          >
-            ✦ Begin Your Reading
-          </Link>
+          <p className="text-mystic-400 mb-8">Preparing your reading...</p>
         </>
       )}
 
@@ -84,10 +84,7 @@ function VerifyPayment() {
         <>
           <div className="text-5xl mb-6">😔</div>
           <h1 className="text-2xl font-bold text-mystic-100 mb-2">Payment Not Confirmed</h1>
-          <p className="text-mystic-400 mb-2">We couldn&apos;t verify your payment. If you were charged, please contact support.</p>
-          {checkoutId && (
-            <p className="text-xs text-mystic-600 mb-8">Debug ID: {checkoutId}</p>
-          )}
+          <p className="text-mystic-400 mb-8">We couldn&apos;t verify your payment. If you were charged, please contact support.</p>
           <Link
             href="/"
             className="inline-block px-8 py-4 bg-mystic-700 rounded-xl text-mystic-100 hover:bg-mystic-600 transition-colors"
