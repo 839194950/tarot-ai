@@ -78,6 +78,11 @@ export default function Home() {
 
       if (!res.ok) throw new Error("Checkout failed");
       const data = await res.json();
+      sessionStorage.setItem("pending_checkout", JSON.stringify({
+        id: data.checkout_id,
+        spreadType: selectedSpread,
+        question,
+      }));
       window.location.href = data.checkout_url;
     } catch (e) {
       setError("Payment setup failed. Please try again.");

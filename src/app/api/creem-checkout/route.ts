@@ -20,7 +20,10 @@ export async function POST(req: NextRequest) {
     const productId = PRODUCT_IDS[spreadType];
     const checkout = await createCheckoutSession(productId);
 
-    return NextResponse.json({ checkout_url: checkout.checkout_url });
+    return NextResponse.json({
+      checkout_url: checkout.checkout_url,
+      checkout_id: checkout.checkout_id,
+    });
   } catch (error: any) {
     console.error("Creem checkout error:", error);
     return NextResponse.json({ error: "Failed to create checkout session" }, { status: 500 });

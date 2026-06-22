@@ -26,8 +26,6 @@ export async function createCheckoutSession(productId: string): Promise<CreemChe
     body: JSON.stringify({
       product_id: productId,
       success_url: `${origin}/reading/success?checkout_id={checkout_id}`,
-      cancel_url: `${origin}/reading/cancel`,
-      embed: false,
     }),
   });
 
@@ -40,7 +38,7 @@ export async function createCheckoutSession(productId: string): Promise<CreemChe
 }
 
 export async function verifyCheckout(checkoutId: string): Promise<CreemCheckoutStatus> {
-  const response = await fetch(`${CREEM_API}/v1/checkouts`, {
+  const response = await fetch(`${CREEM_API}/v1/checkouts?checkout_id=${checkoutId}`, {
     headers: {
       "x-api-key": API_KEY,
     },
@@ -50,11 +48,6 @@ export async function verifyCheckout(checkoutId: string): Promise<CreemCheckoutS
     return { status: "failed" };
   }
 
-  const checkouts = await response.json();
-  const checkout = Array.isArray(checkouts)
-    ? checkouts.find((c: any) => c.id === checkoutId)
-    : null;
-
-  if (!checkout) return { status: "pending" };
+  const checkout = await response.json();
   return { status: checkout.status === "paid" ? "paid" : "pending" };
 }
