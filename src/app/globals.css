@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-mystic-50: #f5f0ff;
+  --color-mystic-100: #ede5ff;
+  --color-mystic-200: #ddd0ff;
+  --color-mystic-300: #c4abff;
+  --color-mystic-400: #a67dff;
+  --color-mystic-500: #8b4dff;
+  --color-mystic-600: #7c29f0;
+  --color-mystic-700: #6d1dd4;
+  --color-mystic-800: #5b18ad;
+  --color-mystic-900: #4c168e;
+  --color-mystic-950: #2e0a5e;
+  --color-gold-400: #f0c040;
+  --color-gold-500: #d4a830;
+  --color-gold-600: #b8922a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: linear-gradient(135deg, #0a0014, #1a0030, #0d001f);
+    color: #f0e6ff;
+    min-height: 100vh;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardReveal {
+  from { transform: rotateY(180deg) scale(0.8); opacity: 0; }
+  to { transform: rotateY(0deg) scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 77, 255, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(139, 77, 255, 0.6); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-cardReveal {
+  animation: cardReveal 0.8s ease-out forwards;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.card-back {
+  background: linear-gradient(135deg, #2e0a5e, #4c168e);
+  border: 2px solid rgba(139, 77, 255, 0.3);
+}
+
+.card-front {
+  background: linear-gradient(135deg, #1a0030, #2e0a5e);
+  border: 2px solid rgba(139, 77, 255, 0.5);
 }
