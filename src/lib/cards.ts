@@ -151,7 +151,7 @@ export const spreads: Record<SpreadType, Spread> = {
     description: "Three cards revealing the story of your journey.",
     cardCount: 3,
     positions: ["Past", "Present", "Future"],
-    price: 499, // $4.99 in cents
+    price: 199, // $1.99 in cents
     isFree: false,
   },
   "celtic-cross": {
@@ -159,7 +159,7 @@ export const spreads: Record<SpreadType, Spread> = {
     description: "The classic 10-card spread for deep insight into your life.",
     cardCount: 10,
     positions: ["Present", "Challenge", "Past", "Future", "Above", "Below", "Advice", "External", "Hopes", "Outcome"],
-    price: 999, // $9.99 in cents
+    price: 599, // $5.99 in cents
     isFree: false,
   },
 };

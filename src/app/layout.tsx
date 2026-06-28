@@ -38,6 +38,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="max-w-6xl mx-auto px-4 text-center text-sm text-mystic-400">
               <p>Mystic Tarot &mdash; For entertainment purposes only.</p>
               <p className="mt-1">AI-powered readings to inspire reflection and self-discovery.</p>
+              <div className="flex items-center justify-center gap-4 mt-4 text-xs">
+                <a href="/privacy" className="text-mystic-500 hover:text-mystic-300 transition-colors">Privacy Policy</a>
+                <span className="text-mystic-700">&middot;</span>
+                <a href="/terms" className="text-mystic-500 hover:text-mystic-300 transition-colors">Terms of Service</a>
+                <span className="text-mystic-700">&middot;</span>
+                <a href="mailto:support@mystictarot.app" className="text-mystic-500 hover:text-mystic-300 transition-colors">support@mystictarot.app</a>
+              </div>
             </div>
           </footer>
         </div>
