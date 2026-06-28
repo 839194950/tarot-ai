@@ -53,7 +53,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-xl font-semibold text-mystic-100 mt-8 mb-3">8. Contact</h2>
-          <p>For questions about these Terms, contact us at <a href="mailto:support@mystictarot.app" className="text-mystic-400 hover:text-mystic-300">support@mystictarot.app</a>.</p>
+          <p>For questions about these Terms, contact us at <a href="mailto:a839194950@outlook.com" className="text-mystic-400 hover:text-mystic-300">a839194950@outlook.com</a>.</p>
         </section>
       </div>
     </div>

@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <span className="text-mystic-700">&middot;</span>
                 <a href="/terms" className="text-mystic-500 hover:text-mystic-300 transition-colors">Terms of Service</a>
                 <span className="text-mystic-700">&middot;</span>
-                <a href="mailto:support@mystictarot.app" className="text-mystic-500 hover:text-mystic-300 transition-colors">support@mystictarot.app</a>
+                <a href="mailto:a839194950@outlook.com" className="text-mystic-500 hover:text-mystic-300 transition-colors">a839194950@outlook.com</a>
               </div>
             </div>
           </footer>
